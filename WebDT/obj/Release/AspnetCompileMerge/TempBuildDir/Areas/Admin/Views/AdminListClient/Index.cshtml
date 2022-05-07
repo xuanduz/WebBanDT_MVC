@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Model.EF.Nguoi_Dung>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3">Người dùng</h1>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-actions float-right">
+                        <div class="dropdown show">
+                            <a href="#" data-toggle="dropdown" data-display="static">
+                                <i class="align-middle" data-feather="more-horizontal"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0">Người Dùng</h5>
+                </div>
+                <div class="card-body">
+                    <table id="datatables-clients" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên Người Dùng</th>
+                                <th>Địa Chỉ</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Model.EF.Nguoi_Dung item in Model)
+                            {
+                                <tr id="row_@item.nd_Id">
+                                    <td>@item.nd_Id.ToString()</td>
+                                    <td>@item.nd_HoVaTen.ToString()</td>
+                                    <td>@item.nd_DiaChi.ToString()</td>
+                                    <td>@item.nd_Email.ToString()</td>
+                                    <td>@item.nd_SoDienThoai.ToString()</td>
+                                    <th class="action-btn">
+                                        <button type="button" class="btn btn-primary edit-btn"><a href="/Admin/AdminListClient/Edit/@item.nd_Id" style="color: unset;">Edit</a></button>
+                                        @*<button type="button" class="btn btn-danger">
+                                            @Ajax.ActionLink("Delete", "Delete", new { @id = item.nd_Id}, new AjaxOptions
+                                       {
+                                           Confirm="Bạn có muốn xóa người dùng này ?",
+                                           OnComplete="$('#row_" + item.nd_Id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </button>*@
+                                    </th>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //$(".edit-btn").click(function () {
+    //    console.log("edit lciked")
+    //    $(".edit-form").show("fast");
+    //});
+    //$(".close-btn").click(function (e) {
+    //    e.preventDefault();
+    //$(".edit-form").hide("fast");
+    //});
+    $(function () {
+      // Datatables clients
+      $("#datatables-clients").DataTable({
+        responsive: true,
+        order: [
+          [1, "asc"]
+        ]
+      });
+    });
+</script>

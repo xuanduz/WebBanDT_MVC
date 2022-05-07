@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WebDT",
+    "\\WebDT\\Areas",
+    "\\WebDT\\Areas\\Admin",
+    "\\WebDT\\Areas\\Admin\\Controllers",
+    "\\WebDT\\Areas\\Admin\\Views",
+    "\\WebDT\\Areas\\Admin\\Views\\AdminHome",
+    "\\WebDT\\Controllers",
+    "\\WebDT\\Models",
+    "\\WebDT\\Models\\EF"
+  ],
+  "SelectedNode": "\\WebDT.sln",
+  "PreviewInSolutionExplorer": false
+}

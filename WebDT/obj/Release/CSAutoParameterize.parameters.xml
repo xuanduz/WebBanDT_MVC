@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ShopDTDbContext-Web.config Connection String" description="ShopDTDbContext Connection String used in web.config by the application to access the database." defaultValue="data source=tcp:xuanduzdbserver.database.windows.net,1433;Initial Catalog=QL_Dien_Thoai;Persist Security Info=False;User ID=xuanduz;Password=Nxd942k1;MultipleActiveResultSets=False;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Study\\Nam3_Ky2\\LapTrinhWeb\\BTL\\QLBanDienThoai_Nhom1_N01\\WebDT\\WebDT\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ShopDTDbContext']/@connectionString" />
+  </parameter>
+</parameters>

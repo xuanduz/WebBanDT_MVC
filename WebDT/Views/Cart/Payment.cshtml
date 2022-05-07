@@ -1,0 +1,50 @@
+﻿@model List<WebDT.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th style="width:48%">Tên sản phẩm</th>
+                <th style="width:10%">Giá</th>
+                <th style="width:10%">Số lượng</th>
+                <th style="width:22%" class="text-center">Thành tiền</th>
+                <th style="width:10%"> </th>
+            </tr>
+        </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var money = (((double)item.Product.tt_GiaBan * (1 - item.Product.sp_GiamGia * 0.01)));
+                    var totalMoney = (((double)item.Product.tt_GiaBan * (1 - item.Product.sp_GiamGia * 0.01))) * item.Quantity;
+                    <tr class="tr1">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                    <img src="~/assets/Image/DT/@item.Product.sp_Anh" alt="Sản phẩm 1" class="img-responsive" width="100">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>@item.Product.sp_Ten @item.Product.tt_BoNho @item.Product.tt_MauSac</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">@string.Format("{0:0,00}", money)₫</td>
+                        <td data-th="Quantity">
+                            <input class="form-control text-center " id="quantity" data-id="@item.Product.tt_Id" value="@item.Quantity" type="number" readonly>
+                        </td>
+                        <td data-th="Subtotal" class="text-center">@string.Format("{0:0,00}", totalMoney)₫</td>
+                    </tr>   
+
+                }
+            </tbody>
+    </table>
+    <h3 class="alert-danger">Đặt hàng thành công</h3>
+    @*@using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+            {
+            
+            }*@
+</div>

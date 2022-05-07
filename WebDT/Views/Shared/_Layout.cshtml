@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="~/assets/clients/css/allPage.css" />
+    <!-- --- bootstrap --- -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+    <div class="home-container">
+        <section class="header">
+            <div class="header-banner">
+                <div class="wrapper">
+                    <img src="~/assets/Image/Banner/banner-header.png" alt="" />
+                </div>
+            </div>
+            <div class="header-content">
+                <div class="wrapper">
+                    <div class="left">
+                        <div class="header-content-logo">
+                            <a href="/Home/Index">
+                                <img src="~/assets/Image/Logo/logo.jpg" alt="" />
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="right">
+                        <div class="header-content-category">
+                            <a href="/Category/Index">
+                                <span>Điện thoại</span>
+                                <i class="fa-solid fa-mobile"></i>
+                            </a>
+                        </div>
+                        @{Html.RenderAction("HeaderCart", "Home");}
+                        @{Html.RenderAction("Account", "User");}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            @RenderBody()
+        </section>
+        <section class="footer">
+            <div class="row">
+                <ul class="col-lg-4">
+                    <li>Lịch sử mua hàng</li>
+                    <li>Cộng tác bán hàng cùng TGDĐ</li>
+                    <li>Tìm hiểu về mua trả góp</li>
+                    <li>Chính sách bảo hành</li>
+                </ul>
+                <ul class="col-lg-4">
+                    <li>Giới thiệu công ty (MWG.vn)</li>
+                    <li>Tuyển dụng</li>
+                    <li>Gửi góp ý, khiếu nại</li>
+                    <li>Tìm siêu thị (3.071 shop)</li>
+                </ul>
+                <ul class="col-lg-4">
+                    <li>
+                        <span>Tổng đài hỗ trợ </span>
+                    </li>
+                    <li>Gọi mua: 1800.1060 (7:30 - 22:00)</li>
+                    <li>Kỹ thuật: 1800.1763 (7:30 - 22:00)</li>
+                    <li>Khiếu nại: 1800.1062 (8:00 - 21:30)</li>
+                    <li>Bảo hành: 1800.1064 (8:00 - 21:00)</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <script>
+            AOS.init({
+                debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+                throttleDelay: 99,
+                delay: 1000,
+                offset: 200,
+            });
+            $("#cart").hover(
+                function() {
+                    $('.popover-cart').removeClass("hide");
+                },
+                function() {
+                    $('.popover-cart').addClass("hide");
+                }
+            );
+    </script>
+
+</body>
+
+</html>
+

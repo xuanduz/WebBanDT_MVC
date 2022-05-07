@@ -1,0 +1,9 @@
+﻿@model List<WebDT.Models.CartItem>
+
+<div class="header-content-cart" id="cart">
+    <a href="/Cart">
+        <span>Giỏ hàng</span>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>@Model.Sum(x => x.Quantity)</span>
+    </a>
+</div>

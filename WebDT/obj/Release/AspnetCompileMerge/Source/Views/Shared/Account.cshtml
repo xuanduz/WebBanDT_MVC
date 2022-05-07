@@ -1,0 +1,22 @@
+﻿@model WebDT.Common.UserLogin
+
+<div class="header-content-account">
+
+    @if (Session[WebDT.Common.CommonConstant.USER_SESSION] == null)
+    {
+        <a href="/User/Login">
+            <span>Đăng nhập</span>
+        </a>
+        <span>|</span>
+        <a href="/User/Register">
+            <span>Đăng ký</span>
+        </a>
+    }
+    else
+    {
+        <a href="/User/Detail">
+            <span>Tài khoản<i class="fa-solid fa-user"></i></span>
+        </a>
+    }
+
+</div>

@@ -1,0 +1,59 @@
+﻿@model List<Model.EF.Nha_Cung_Cap>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3">Nhà cung cấp</h1>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-actions float-right">
+                        <div class="dropdown show">
+                            <a href="#" data-toggle="dropdown" data-display="static">
+                                <i class="align-middle" data-feather="more-horizontal"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0">Nhà cung cấp</h5>
+                </div>
+                <div class="card-body">
+                    <table id="datatables-clients" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên nhà cung cấp</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Website</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Model.EF.Nha_Cung_Cap item in Model)
+                            {
+                                <tr id="row_ncc_@item.ncc_Id">
+                                    <td>@item.ncc_Id.ToString()</td>
+                                    <td>@item.ncc_Name.ToString()</td>
+                                    <td>@item.ncc_Email.ToString()</td>
+                                    <td>@item.ncc_SoDienThoai.ToString()</td>
+                                    <td><a href="@item.ncc_Website.ToString()">@item.ncc_Website.ToString()</a></td>
+                                    <th class="action-btn">
+                                        <button type="button" class="btn btn-primary edit-btn"><a href="/Admin/AdminNCC/Detail/@item.ncc_Id" style="color: unset;">Thông tin chi tiết</a></button>
+                                    </th>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

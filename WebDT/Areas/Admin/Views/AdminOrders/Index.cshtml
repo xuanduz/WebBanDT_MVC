@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Model.ProcExcute.GetOrders>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3">Đơn hàng</h1>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-actions float-right">
+                        <div class="dropdown show">
+                            <a href="#" data-toggle="dropdown" data-display="static">
+                                <i class="align-middle" data-feather="more-horizontal"></i>
+                            </a>
+
+                            @*<div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>*@
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0">Đơn hàng</h5>
+                </div>
+                <div class="card-body">
+                    <table id="datatables-clients" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID Đơn hàng</th>
+                                <th>ID Người đặt</th>
+                                <th>Trạng thái</th>
+                                @*<th>Hình thức</th>*@
+                                <th>ID Sản phẩm</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Model.ProcExcute.GetOrders item in Model)
+                            {
+                            <tr id="orders-row_@item.dh_id">
+                                <td>@item.dh_id.ToString()</td>
+                                <td>@item.nd_id.ToString()</td>
+                                <td>@item.dh_TrangThai.ToString()</td>
+                                @*<td>@item.dh_HinhThuc.ToString()</td>*@
+                                <td>@item.tt_id.ToString()</td>
+                                <td>@item.dhsp_SoLuong.ToString()</td>
+                                @*<th class="action-btn">
+                                    <button type="button" class="btn btn-primary edit-btn"><a href="/Admin/AdminOrders/Edit/@item.dh_id" style="color: unset;">Edit</a></button>*@
+                                    @*<button type="button" class="btn btn-danger">
+                 @Ajax.ActionLink("Delete", "Delete", new { @id = item.nd_Id}, new AjaxOptions
+            {
+                Confirm="Bạn có muốn xóa người dùng này ?",
+                OnComplete="$('#row_" + item.nd_Id + "').remove()",
+                HttpMethod = "Delete"
+            })
+             </button>*@
+                                @*</th>*@
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

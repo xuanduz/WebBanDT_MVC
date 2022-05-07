@@ -1,0 +1,159 @@
+﻿@model List<WebDT.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th style="width:48%">Tên sản phẩm</th>
+                <th style="width:15%">Giá</th>
+                <th style="width:5%">Số lượng</th>
+                <th style="width:22%" class="text-center">Thành tiền</th>
+                <th style="width:10%"> </th>
+            </tr>
+        </thead>
+        @if (Model.Count > 0)
+        {
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var money = (((double)item.Product.tt_GiaBan * (1 - item.Product.sp_GiamGia * 0.01)));
+                    var totalMoney = (((double)item.Product.tt_GiaBan * (1 - item.Product.sp_GiamGia * 0.01))) * item.Quantity;
+                    <tr class="tr1">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                    <img src="~/assets/Image/DT/@item.Product.sp_Anh" alt="Sản phẩm 1" class="img-responsive" width="100">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>@item.Product.sp_Ten @item.Product.tt_BoNho @item.Product.tt_MauSac</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">@string.Format("{0:0,00}", money)₫</td>
+                        <td data-th="Quantity">
+                            <input class="quantity-cart" id="quantity" data-id="@item.Product.tt_Id" value="@item.Quantity" type="number" onchange="handleOnchange()">
+                        </td>
+                        <td data-th="Subtotal" class="text-center">@string.Format("{0:0,00}", totalMoney)₫</td>
+                        <td class="actions">
+                            <button class="btn btn-danger btn-sm delete" data-id="@item.Product.tt_Id">
+                                <i class="fa-solid fa-trash"></i> 
+                            </button>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <button class="btn btn-warning" onclick="history.back()">
+                            <i class="fa fa-angle-left"></i> Tiếp tục mua hàng
+                        </button>
+                    </td>
+                    <td class="hidden-xs text-center">
+                        <strong>Tổng tiền @string.Format("{0:0,00}", Model.Sum(x => (((double)x.Product.tt_GiaBan * (1 - x.Product.sp_GiamGia * 0.01))) * x.Quantity)) đ</strong>
+                    </td>
+                    <td>
+                        <button id="btnUpdate" class="btn">Cập nhật giỏ hàng</button>
+                    </td>
+                    <td>
+                        <a href="/checklogin/CheckSession" class="btn btn-success btn-block" id="payment">Thanh toán <i class="fa fa-angle-right"></i></a>
+                    </td>
+                </tr>
+            </tfoot>
+        }
+        else
+            {
+                <h4 class="alert alert-danger">Chưa có sản phầm nào trong giỏ hàng</h4>
+            }
+  
+    </table>
+</div>
+
+<script type="text/javascript">
+    //function handleOnchange() {
+    //    var arr = $('.quantity-cart')
+
+
+    //    $(`#btnUpdate`).click();
+
+    //    arr.each(function (i, item) {
+    //        console.log(item)
+    //        if (parseInt(item.val) === 0) {
+    //            alert('aasdas')
+    //            //$.ajax({
+    //            //    data: { id: $(this).data('id') },
+    //            //    url: '/Cart/Delete',
+    //            //    dataType: 'json',
+    //            //    type: 'POST',
+    //            //    success: function (res) {
+    //            //        if (res.status == true) {
+    //            //            window.location.href = '/Cart';
+    //            //        }
+    //            //    }
+    //            //})
+    //        }
+    //    })
+    //    //$.ajax({
+    //    //    data: { id: $(this).data('id') },
+    //    //    url: '/Cart/Change',
+    //    //    dataType: 'json',
+    //    //    type: 'POST',
+    //    //    success: function (res) {
+    //    //        console.log('aaa')
+    //    //        if (res.status == true) {
+    //    //            window.location.href = '/Cart';
+    //    //        }
+    //    //    }
+    //    //})
+    //}
+    $('#btnUpdate').on('click', function () {
+        var cartList = [];
+        $('.quantity-cart').each(function (i, item) {
+            
+            cartList.push({
+                Quantity: $(item).val(),
+                Product: {
+                    tt_Id: $(item).data('id')
+                }
+            })
+        })
+
+        $.ajax({
+            url: '/Cart/Update',
+            data: { cartModel: JSON.stringify(cartList) },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = '/Cart';
+                }
+            }
+        })
+    })
+
+    $('.delete').on('click', function (e) {
+        e.preventDefault()
+        $.ajax({
+            data: {id: $(this).data('id')},
+            url: '/Cart/Delete',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = '/Cart';
+                }
+            }
+        })
+    })
+
+    $('#payment').on('click', function () {
+        window.location.href = '/payment'
+    })
+
+</script>

@@ -1,0 +1,176 @@
+﻿@model Model.ViewModel.ProductInfoModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var moreProduct = (List<Model.ViewModel.ProductInfoModel>)ViewBag.MoreProducts;
+}
+
+@*@foreach (var item in Model)
+{
+    <h2>@item.sp_Ten va @item.tt_BoNho va @item.tt_MauSac</h2>
+}*@
+
+<div class="wrapper">
+    <h1>@Model.sp_Ten @Model.tt_BoNho @Model.tt_MauSac</h1>
+    <hr>
+    <div class="row">
+        <div class="content-right col-xl-7">
+            <div class="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="~/assets/Image/DT/DT002.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/assets/Image/DT/DT003.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/assets/Image/DT/DT004.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-btn carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-btn carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="danh-gia">
+                <h2 style="margin-top: 50px;">Đánh giá chi tiết @Model.sp_Ten @Model.tt_BoNho @Model.tt_MauSac</h2>
+                <div class="content">
+                    <b>iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp.</b>
+                    <img src="~/assets/Image/DT/DT003.jpg" alt="">
+                    <b>Đắm chìm trong không gian màn hình lớn cực đã</b>
+                    <p>
+                        Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất. Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu
+                        thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết
+                        bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
+                    </p>
+                    <img src="~/assets/Image/DT/DT005.jpg" alt="">
+                    <b>Bước nhảy vọt về thời lượng pin</b>
+                    <p>
+                        Dòng iPhone Pro Max luôn được người dùng yêu thích nhờ thời lượng pin siêu dài, tuy nhiên iPhone 13 Pro Max còn làm được nhiều hơn thế. Dung lượng pin lớn hơn, màn hình mới và bộ vi xử lý Apple A15 Bionic tiết kiệm điện
+                        hơn giúp iPhone 13 Pro Max trở thành chiếc iPhone có thời lượng pin tốt nhất từ trước đến nay. So với iPhone 12 Pro Max, iPhone 13 Pro Max có thời gian sử dụng dài hơn 2,5 giờ. Bạn sẽ cảm nhận rõ sự khác biệt khi sử
+                        dụng thực tế, thời lượng pin iPhone 13 Pro Max thậm chí còn có thể kéo dài đến ngày thứ 3 với nhu cầu sử dụng thông thường.
+                    </p>
+                    <img src="~/assets/Image/DT/DT003.jpg" alt="">
+                    <b>iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp.</b>
+                    <img src="./img/iphone-13-pro-max-1.jpg" alt="">
+                    <b>Đắm chìm trong không gian màn hình lớn cực đã</b>
+                    <p>
+                        Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất. Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu
+                        thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết
+                        bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
+                    </p>
+                    <img src="~/assets/Image/DT/DT002.jpg" alt="">
+                    <b>Bước nhảy vọt về thời lượng pin</b>
+                    <p>
+                        Dòng iPhone Pro Max luôn được người dùng yêu thích nhờ thời lượng pin siêu dài, tuy nhiên iPhone 13 Pro Max còn làm được nhiều hơn thế. Dung lượng pin lớn hơn, màn hình mới và bộ vi xử lý Apple A15 Bionic tiết kiệm điện
+                        hơn giúp iPhone 13 Pro Max trở thành chiếc iPhone có thời lượng pin tốt nhất từ trước đến nay. So với iPhone 12 Pro Max, iPhone 13 Pro Max có thời gian sử dụng dài hơn 2,5 giờ. Bạn sẽ cảm nhận rõ sự khác biệt khi sử
+                        dụng thực tế, thời lượng pin iPhone 13 Pro Max thậm chí còn có thể kéo dài đến ngày thứ 3 với nhu cầu sử dụng thông thường.
+                    </p>
+                    <img src="~/assets/Image/DT/DT006.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="content-right col-xl-5">
+            <div class="color">
+                <button type="button" class="btn btn-warning">@Model.tt_MauSac</button>
+            </div>
+            <div class="memory">
+                <button type="button" class="btn btn-warning">@Model.tt_BoNho</button>
+            </div>
+            <div class="price">
+                <del><span>@string.Format("{0:0,00}", Model.tt_GiaBan)₫</span></del>
+                <span style="color: red;">@string.Format("{0:0,00}", (((double)Model.tt_GiaBan * (1 - Model.sp_GiamGia * 0.01))))₫</span>
+            </div>
+            <div class="promotion">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <span>Khuyến mãi trị giá @string.Format("{0:0,00}", (((double)Model.tt_GiaBan * (Model.sp_GiamGia * 0.01))))₫ </span>
+                        <p>Giá và khuyến mãi dự kiến áp dụng đến 23:59 11/03</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Giảm giá 50% gói bảo hành mở rộng thêm 1 năm (chính hãng)</li>
+                        <li class="list-group-item">Giảm đến 300,000đ khi tham gia thu cũ đổi mới (Không áp dụng kèm giảm giá qua VNPAY, Moca)</li>
+                        <li class="list-group-item">Giảm 50% giá gói cước 1 năm (Vina350/Vina500) cho Sim VinaPhone trả sau (Trị giá đến 3 triệu) </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="buy">
+                <button type="button" class="btn btn-warning btn-lg btn-block">
+                    <a href="/add-to-cart?spId=@Model.tt_Id&quantity=1">Thêm vào giỏ hàng</a>
+                </button>
+            </div>
+            <div class="specification">
+                <h3>Thông số kỹ thuật điện thoại Iphone 13 Pro Max</h3>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="col">Màn hình</th>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-6">Công nghệ màn hình:</td>
+                            <td class="col-6">@Model.tt_ManHinh</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Camera sau</th>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-6">Độ phân giải:</td>
+                            <td class="col-6">@Model.tt_CameraSau</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Camera trước</th>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-6">Độ phân giải:</td>
+                            <td class="col-6">@Model.tt_CameraSau</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Bộ nhớ & Lưu trữ</th>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-6">Bộ nhớ trong:</td>
+                            <td class="col-6">@Model.tt_BoNho</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="show-more-smartphone">
+            <h3>Xem thêm sản phẩm</h3>
+            <div class="list-product row">
+                @foreach (var item in moreProduct)
+                {
+                    var url = "/Detail/" + item.sp_Ten + "-" + item.tt_BoNho + "-" + item.tt_MauSac;
+                    <div class="card col-xl-3 col-md-4 col-6">
+                        <img class="card-img-top" src="~/assets/Image/DT/@item.sp_Anh" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.sp_Ten @item.tt_BoNho</h5>
+                            <div class="khuyen-mai" style="display: flex; gap:10px;">
+                                <p>Từ: </p>
+                                <del><span>@string.Format("{0:0,00}", item.tt_GiaBan)₫</span></del>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <p>Chỉ còn: </p>
+                                <span style="color: red;">@string.Format("{0:0,00}", (((double)item.tt_GiaBan * (1 - item.sp_GiamGia * 0.01))))₫</span>
+                            </div>
+                            <a href="@url" class="btn btn-warning">Xem thêm</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

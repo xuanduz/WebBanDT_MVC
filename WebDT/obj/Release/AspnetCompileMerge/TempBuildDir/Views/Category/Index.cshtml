@@ -1,0 +1,46 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Model.ViewModel.ProductInfoModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="category-search">
+    @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" name="searchCategory" id="exampleFormControlInput1" placeholder="Nhập tên điện thoại cần tìm" />
+            <button type="submit" class="btn btn-warning header-content-search-btn"> Tìm kiếm </button>
+        </div>
+    }
+</div>
+<h1>Danh sách sản phẩm</h1>
+<section class="category row">
+
+    <div class="container-product row col-12">
+        @foreach (var item in Model)
+        {
+            var url = "/Detail/" + item.sp_Ten + "-" + item.tt_BoNho + "-" + item.tt_MauSac;
+            <div class="card col-xl-3 col-md-4 col-6">
+                <img class="card-img-top" src="~/assets/Image/DT/@item.sp_Anh" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.sp_Ten @item.tt_BoNho @item.tt_MauSac</h5>
+                    <div class="khuyen-mai" style="display: flex; gap:10px;">
+                        <p>Từ: </p>
+                        <del><span>@string.Format("{0:0,00}", item.tt_GiaBan)₫</span></del>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <p>Chỉ còn: </p>
+                        <span>@string.Format("{0:0,00}", (((double)item.tt_GiaBan * (1 - item.sp_GiamGia * 0.01))))₫</span>
+                    </div>
+                    <a href="@url" class="btn btn-warning">Xem thêm</a>
+                </div>
+            </div>
+        }
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+</section>
+
+<script type="text/javascript">
+
+</script>
+
